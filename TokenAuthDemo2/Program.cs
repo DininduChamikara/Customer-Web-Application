@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using TokenAuthDemo2.Data;
+using TokenAuthDemo2.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
