@@ -7,8 +7,8 @@ using TokenAuthDemo2.Models;
 namespace TokenAuthDemo2.Controllers
 {
     [Route("[controller]")]
+    [Authorize]
     [ApiController]
-    /*[Authorize]*/
     public class CustomerController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -18,6 +18,7 @@ namespace TokenAuthDemo2.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var CustomerData = "./Data/UserData.json";

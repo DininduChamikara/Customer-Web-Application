@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -11,14 +12,14 @@ namespace TokenAuthDemo2.Controllers
     [ApiController]
     public class LoginController : Controller
     {
-        private readonly IConfiguration _configuration;
+      /*  private readonly IConfiguration _configuration;
 
         public LoginController(IConfiguration configuation) 
         {
             _configuration = configuation;
-        }
+        }*/
 
-        [HttpPost]
+      /*  [HttpPost]
         [Route("login")]
         public IActionResult Login([FromBody] User user)
         {
@@ -47,6 +48,6 @@ namespace TokenAuthDemo2.Controllers
               signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
+        }*/
     }
 }
