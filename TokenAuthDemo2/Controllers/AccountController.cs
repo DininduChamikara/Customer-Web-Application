@@ -47,7 +47,7 @@ namespace TokenAuthDemo2.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         public IActionResult Register()
@@ -97,7 +97,7 @@ namespace TokenAuthDemo2.Controllers
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 if (string.IsNullOrEmpty(registerVM.RedirectUrl))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Customer");
                 }
                 else
                 {
@@ -150,7 +150,7 @@ namespace TokenAuthDemo2.Controllers
 
         [HttpPost]
         [Route("generateToken")]
-        public async Task<IActionResult> Login([FromBody] LoginUser loginUser)
+        public async Task<IActionResult> GenerateNewToken([FromBody] LoginUser loginUser)
         {
             if (ModelState.IsValid)
             {
@@ -169,6 +169,11 @@ namespace TokenAuthDemo2.Controllers
             }
 
             return BadRequest("Invalid user");
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
 
         private string GenerateJwtToken(LoginUser loginUser)

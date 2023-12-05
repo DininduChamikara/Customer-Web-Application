@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using TokenAuthDemo2.Models;
+using TokenAuthDemo2.Utility;
 
 namespace TokenAuthDemo2.Controllers
 {
-    [Route("[controller]")]
+    [Route("")]
     [Authorize]
     [ApiController]
     public class CustomerController : Controller
@@ -19,6 +20,7 @@ namespace TokenAuthDemo2.Controllers
         }
 
         [HttpGet]
+        [Authorize (Roles = SD.Role_Admin)]
         public async Task<IActionResult> Index()
         {
             var CustomerData = "./Data/UserData.json";
