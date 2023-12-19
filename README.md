@@ -16,7 +16,7 @@ Password - Customer@123
 * If you registered as an Admin you can visit the Admin Page and see the details about the customers.
 * If you registered as a customer you can not access the Admin Page.
 * If you want to access the APIs you can visit the link below,
-    https://localhost:7019/swagger/index.html
+    https://localhost:7135/swagger/index.html
 
 * You can generate the JWT token using your login credentials
 ```markdown
