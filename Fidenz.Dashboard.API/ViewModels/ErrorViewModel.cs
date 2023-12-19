@@ -1,4 +1,4 @@
-namespace Fidenz.Dashboard.API.Models
+namespace Fidenz.Dashboard.API.ViewModels
 {
     public class ErrorViewModel
     {
