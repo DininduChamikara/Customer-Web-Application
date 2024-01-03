@@ -13,7 +13,6 @@ using System.Text;
 
 namespace Fidenz.Dashboard.API.Controllers
 {
-    [ApiVersion("2.0")]
     public class AccountController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

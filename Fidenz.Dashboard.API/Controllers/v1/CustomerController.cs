@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace Fidenz.Dashboard.API.Controllers
+namespace Fidenz.Dashboard.API.Controllers.v1
 {
     [Route("")]
     [ApiVersion("1.0")]

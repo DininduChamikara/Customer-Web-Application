@@ -1,13 +1,17 @@
 using Asp.Versioning;
+using Asp.Versioning.Conventions;
 using BusinessLogicLayer.Common.Interfaces;
 using DataAccessLayer.Data;
 using DataAccessLayer.Repository;
 using Fidenz.Dashboard.API.Repository;
+using Fidenz.Dashboard.API.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,13 +42,10 @@ builder.Services.AddAuthentication(x =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSwaggerGen(c =>
+builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+builder.Services.AddSwaggerGen(options =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Version = "v1",
-        Title = "Swagger API",
-    });
+    options.OperationFilter<SwaggerDefaultValues>();
 });
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -58,35 +59,23 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
-var apiVersioningBuilder = builder.Services.AddApiVersioning(o =>
+builder.Services.AddApiVersioning(opt =>
 {
-    o.AssumeDefaultVersionWhenUnspecified = true;
-    o.DefaultApiVersion = new ApiVersion(1, 0);
-    o.ReportApiVersions = true;
-    o.ApiVersionReader = ApiVersionReader.Combine(
-        new QueryStringApiVersionReader("api-version"),
-        new HeaderApiVersionReader("X-Version"),
-        new MediaTypeApiVersionReader("ver"));
+    opt.DefaultApiVersion = new ApiVersion(1, 0);
+    opt.AssumeDefaultVersionWhenUnspecified = true;
+    opt.ReportApiVersions = true;
+    opt.ApiVersionReader = new UrlSegmentApiVersionReader();
 });
 
-apiVersioningBuilder.AddApiExplorer(
-    options =>
+builder.Services
+    .AddApiVersioning()
+    .AddApiExplorer(options =>
     {
         options.GroupNameFormat = "'v'VVV";
         options.SubstituteApiVersionInUrl = true;
     });
 
-
 var app = builder.Build();
-
-app.UseSwagger(c =>
-{
-    c.SerializeAsV2 = true;
-});
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fidenz.Dashboard.API");
-});
 
 
 // Configure the HTTP request pipeline.
@@ -96,6 +85,20 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseSwagger();
+
+app.UseSwaggerUI(options =>
+{
+    var descriptions = app.DescribeApiVersions();
+
+    foreach (var description in descriptions)
+    {
+        var url = $"/swagger/{description.GroupName}/swagger.json";
+        var name = description.GroupName.ToUpperInvariant();
+        options.SwaggerEndpoint(url, name);
+    }
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
