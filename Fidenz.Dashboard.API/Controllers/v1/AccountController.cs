@@ -11,7 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Fidenz.Dashboard.API.Controllers
+namespace Fidenz.Dashboard.API.Controllers.v1
 {
     public class AccountController : Controller
     {
@@ -22,7 +22,7 @@ namespace Fidenz.Dashboard.API.Controllers
 
         private readonly IConfiguration _configuration;
 
-        public AccountController (IUnitOfWork unitOfWork, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        public AccountController(IUnitOfWork unitOfWork, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
