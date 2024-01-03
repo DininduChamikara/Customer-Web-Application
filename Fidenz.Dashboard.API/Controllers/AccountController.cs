@@ -1,4 +1,5 @@
-﻿using BusinessLogicLayer.Common.Interfaces;
+﻿using Asp.Versioning;
+using BusinessLogicLayer.Common.Interfaces;
 using BusinessLogicLayer.Utility;
 using DataAccessLayer.DTOs;
 using Fidenz.Dashboard.API.ViewModels;
@@ -12,6 +13,7 @@ using System.Text;
 
 namespace Fidenz.Dashboard.API.Controllers
 {
+    [ApiVersion("2.0")]
     public class AccountController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

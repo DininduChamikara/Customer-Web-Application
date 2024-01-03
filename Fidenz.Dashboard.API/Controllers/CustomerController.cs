@@ -1,4 +1,5 @@
-﻿using BusinessLogicLayer.Common.Interfaces;
+﻿using Asp.Versioning;
+using BusinessLogicLayer.Common.Interfaces;
 using BusinessLogicLayer.Utility;
 using DataAccessLayer.Data;
 using DataAccessLayer.DTOs;
@@ -11,6 +12,7 @@ using Newtonsoft.Json;
 namespace Fidenz.Dashboard.API.Controllers
 {
     [Route("")]
+    [ApiVersion("1.0")]
     [Authorize]
     [ApiController]
     public class CustomerController : Controller
