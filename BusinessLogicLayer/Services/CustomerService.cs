@@ -120,6 +120,42 @@ namespace BusinessLogicLayer.Services
             return distance;
         }
 
+        public List<Customer> SearchCustomer(string strPart)
+        {
+            if (string.IsNullOrEmpty(strPart))
+            {
+                return null;
+            }
+            List<Customer> matchingCustomers = _unitOfWork.Customer.GetAll()
+                    .Where(c =>
+                        c.Id.Contains(strPart) ||
+                        c.EyeColor.Contains(strPart) ||
+                        c.Name.Contains(strPart) ||
+                        c.Company.Contains(strPart) ||
+                        c.Email.Contains(strPart) ||
+                        c.Phone.Contains(strPart) ||
+                        c.About.Contains(strPart)
+                    )
+                    .ToList();
+            return matchingCustomers;
+        }
+
+        public List<ZipCodeCustomerGroup> GetCustomersGroupedByZip()
+        {
+            // Group customers by zip code
+            var groupedCustomers = _unitOfWork.Customer.GetAll()
+                .GroupBy(c => c.Address.Zipcode)
+                .Select(group => new ZipCodeCustomerGroup
+                {
+                    ZipCode = group.Key,
+                    Customers = group.ToList()
+                })
+                .ToList();
+
+            return groupedCustomers;
+
+        }
+
         private double DegreeToRadian(double degree)
         {
             return degree * Math.PI / 180.0;

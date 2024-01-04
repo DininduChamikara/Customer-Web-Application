@@ -74,6 +74,43 @@ namespace Fidenz.Dashboard.API.Controllers.v3
             }
         }
 
+        [MapToApiVersion("3.0")]
+        [HttpGet]
+        [Route("search")]
+        public async Task<IActionResult> SearchCustomers(string strPart)
+        {
+            if (string.IsNullOrEmpty(strPart))
+            {
+                return BadRequest("Invalid or empty search parameter");
+            }
+            try
+            {
+                // Search for customers where any property contains the specified partial string
+                var matchingCustomers = _customerService.SearchCustomer(strPart);
+                return Ok(matchingCustomers);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [MapToApiVersion("3.0")]
+        [HttpGet]
+        [Route("groupedByZip")]
+        public IActionResult GetCustomersGroupedByZip()
+        {
+            try
+            {
+                // Group customers by zip code
+                var groupedCustomers = _customerService.GetCustomersGroupedByZip();
+                return Ok(groupedCustomers);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
     }
 

@@ -14,5 +14,7 @@ namespace BusinessLogicLayer.Services
         Task<IEnumerable<Customer>> ImportCustomersFromJsonAsync();
         Customer UpdateCustomerAsync(CustomerDTO customerDto);
         double GetDistance (GetDistanceRequestDTO getDistanceRequestDTO);
+        List<Customer> SearchCustomer(String strPart);
+        List<ZipCodeCustomerGroup> GetCustomersGroupedByZip();
     }
 }
