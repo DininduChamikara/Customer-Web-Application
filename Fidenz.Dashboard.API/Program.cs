@@ -1,9 +1,9 @@
 using Asp.Versioning;
 using Asp.Versioning.Conventions;
-using BusinessLogicLayer.Common.Interfaces;
+using BusinessLogicLayer.Services;
+using DataAccessLayer.Common.Interfaces;
 using DataAccessLayer.Data;
 using DataAccessLayer.Repository;
-using Fidenz.Dashboard.API.Repository;
 using Fidenz.Dashboard.API.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -57,6 +57,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 
 builder.Services.AddApiVersioning(opt =>

@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
-using BusinessLogicLayer.Common.Interfaces;
 using BusinessLogicLayer.Utility;
+using DataAccessLayer.Common.Interfaces;
 using DataAccessLayer.DTOs;
 using Fidenz.Dashboard.API.ViewModels;
 using Microsoft.AspNetCore.Identity;

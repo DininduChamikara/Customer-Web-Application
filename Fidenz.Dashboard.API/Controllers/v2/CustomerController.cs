@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
-using BusinessLogicLayer.Common.Interfaces;
 using BusinessLogicLayer.Utility;
+using DataAccessLayer.Common.Interfaces;
 using DataAccessLayer.Data;
 using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;

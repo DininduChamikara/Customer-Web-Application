@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogicLayer.Common.Interfaces
+namespace DataAccessLayer.Common.Interfaces
 {
     public interface IUnitOfWork
     {
-        ICustomerRepository Customer {  get; }
-
+        ICustomerRepository Customer { get; }
     }
 }

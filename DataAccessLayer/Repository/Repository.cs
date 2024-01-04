@@ -1,11 +1,14 @@
-﻿using BusinessLogicLayer.Common.Interfaces;
+﻿using DataAccessLayer.Common.Interfaces;
 using DataAccessLayer.Data;
-using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Fidenz.Dashboard.API.Repository
+namespace DataAccessLayer.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {

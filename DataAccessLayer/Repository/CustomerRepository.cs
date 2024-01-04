@@ -1,12 +1,9 @@
-﻿using BusinessLogicLayer.Common.Interfaces;
+﻿using DataAccessLayer.Common.Interfaces;
 using DataAccessLayer.Data;
 using DataAccessLayer.Models;
-using Fidenz.Dashboard.API.Repository;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
