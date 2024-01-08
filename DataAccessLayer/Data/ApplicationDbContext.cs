@@ -24,6 +24,14 @@ namespace DataAccessLayer.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Customer>()
+                .HasKey(c => c.Id);
+
+            modelBuilder.Entity<Customer>()
+                .Property(c => c.Id)
+                .UseIdentityColumn();
+
             modelBuilder.Entity<Customer>().OwnsOne(c => c.Address);
         }
     }

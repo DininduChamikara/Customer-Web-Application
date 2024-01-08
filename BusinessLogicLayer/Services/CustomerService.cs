@@ -34,14 +34,14 @@ namespace BusinessLogicLayer.Services
             foreach (var customer in customersList)
             {
                 // Check if the customer with the same ID already exists in the database
-                var existingCustomer = _unitOfWork.Customer.Get(c => c.Id == customer._id);
+                var existingCustomer = _unitOfWork.Customer.Get(c => c.Id.ToString() == customer._id);
 
                 if (existingCustomer == null)
                 {
                     // Insert the customer into the database
                     Customer cust = new Customer();
-                    cust.CustomerId = customer.Index;
-                    cust.Id = customer._id;
+                    cust.CustomerId = customer._id;
+                    //cust.Id = customer._id;
                     cust.Index = customer.Index;
                     cust.Age = customer.Age;
                     cust.EyeColor = customer.EyeColor;
@@ -72,7 +72,7 @@ namespace BusinessLogicLayer.Services
 
         public Customer UpdateCustomerAsync(CustomerDTO customerDto)
         {
-            Customer cust = _unitOfWork.Customer.Get(c => c.Id == customerDto._id);
+            Customer cust = _unitOfWork.Customer.Get(c => c.CustomerId == customerDto._id);
             if (cust == null)
             {
                 return null;
@@ -85,7 +85,7 @@ namespace BusinessLogicLayer.Services
             _unitOfWork.Customer.Save();
 
             // Fetch the updated customer from the database
-            Customer updatedCustomer = _unitOfWork.Customer.Get(c => c.Id == customerDto._id);
+            Customer updatedCustomer = _unitOfWork.Customer.Get(c => c.CustomerId == customerDto._id);
 
             return updatedCustomer;
         }
@@ -94,7 +94,7 @@ namespace BusinessLogicLayer.Services
         {
             const double EarthRadius = 6371;
 
-            Customer cust = _unitOfWork.Customer.Get(c => c.Id == getDistanceRequestDTO.CustomerId);
+            Customer cust = _unitOfWork.Customer.Get(c => c.CustomerId == getDistanceRequestDTO.CustomerId);
             if (cust == null)
             {
                 return 0;
@@ -128,7 +128,7 @@ namespace BusinessLogicLayer.Services
             }
             List<Customer> matchingCustomers = _unitOfWork.Customer.GetAll()
                     .Where(c =>
-                        c.Id.Contains(strPart) ||
+                        c.CustomerId.Contains(strPart) ||
                         c.EyeColor.Contains(strPart) ||
                         c.Name.Contains(strPart) ||
                         c.Company.Contains(strPart) ||
