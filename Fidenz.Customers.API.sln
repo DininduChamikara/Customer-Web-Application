@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fidenz.Customers.API", "Fidenz.Dashboard.API\Fidenz.Customers.API.csproj", "{6E925C83-2D8E-4FC3-9DAD-8D35F5BC8E47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fidenz.Customers.API", "Fidenz.Customers.API\Fidenz.Customers.API.csproj", "{71BE1D9B-55AC-42BC-85E7-B69DB9DC3F12}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fidenz.Customers.Application", "BusinessLogicLayer\Fidenz.Customers.Application.csproj", "{B6E0FF26-9371-4F76-953C-74B04D61AE7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fidenz.Customers.Application", "Fidenz.Customers.Application\Fidenz.Customers.Application.csproj", "{7DA8D8E0-66A1-4703-A4E6-E9CB067367AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fidenz.Customers.Domain", "DataAccessLayer\Fidenz.Customers.Domain.csproj", "{78123ED9-8D83-4DD8-AD12-3FF02628CEB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fidenz.Customers.Domain", "Fidenz.Customers.Domain\Fidenz.Customers.Domain.csproj", "{989F1B33-F766-48BF-AE97-6ABDD1CC2D96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6E925C83-2D8E-4FC3-9DAD-8D35F5BC8E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E925C83-2D8E-4FC3-9DAD-8D35F5BC8E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E925C83-2D8E-4FC3-9DAD-8D35F5BC8E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E925C83-2D8E-4FC3-9DAD-8D35F5BC8E47}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B6E0FF26-9371-4F76-953C-74B04D61AE7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6E0FF26-9371-4F76-953C-74B04D61AE7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6E0FF26-9371-4F76-953C-74B04D61AE7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6E0FF26-9371-4F76-953C-74B04D61AE7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78123ED9-8D83-4DD8-AD12-3FF02628CEB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78123ED9-8D83-4DD8-AD12-3FF02628CEB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78123ED9-8D83-4DD8-AD12-3FF02628CEB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78123ED9-8D83-4DD8-AD12-3FF02628CEB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71BE1D9B-55AC-42BC-85E7-B69DB9DC3F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71BE1D9B-55AC-42BC-85E7-B69DB9DC3F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71BE1D9B-55AC-42BC-85E7-B69DB9DC3F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71BE1D9B-55AC-42BC-85E7-B69DB9DC3F12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DA8D8E0-66A1-4703-A4E6-E9CB067367AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DA8D8E0-66A1-4703-A4E6-E9CB067367AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DA8D8E0-66A1-4703-A4E6-E9CB067367AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DA8D8E0-66A1-4703-A4E6-E9CB067367AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{989F1B33-F766-48BF-AE97-6ABDD1CC2D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{989F1B33-F766-48BF-AE97-6ABDD1CC2D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{989F1B33-F766-48BF-AE97-6ABDD1CC2D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{989F1B33-F766-48BF-AE97-6ABDD1CC2D96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
