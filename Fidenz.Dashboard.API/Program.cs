@@ -3,6 +3,7 @@ using Asp.Versioning.Conventions;
 using BusinessLogicLayer.Services;
 using DataAccessLayer.Common.Interfaces;
 using DataAccessLayer.Data;
+using DataAccessLayer.Profiles;
 using DataAccessLayer.Repository;
 using Fidenz.Dashboard.API.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -58,6 +59,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
 builder.Services.AddApiVersioning(opt =>
@@ -100,6 +102,8 @@ app.UseSwaggerUI(options =>
         options.SwaggerEndpoint(url, name);
     }
 });
+
+//builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

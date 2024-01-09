@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Common.Interfaces;
+﻿using AutoMapper;
+using DataAccessLayer.Common.Interfaces;
 using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +16,12 @@ namespace BusinessLogicLayer.Services
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public CustomerService(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+
+        public CustomerService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<Customer>> ImportCustomersFromJsonAsync()
@@ -39,22 +43,7 @@ namespace BusinessLogicLayer.Services
                 if (existingCustomer == null)
                 {
                     // Insert the customer into the database
-                    Customer cust = new Customer();
-                    cust.CustomerId = customer._id;
-                    //cust.Id = customer._id;
-                    cust.Index = customer.Index;
-                    cust.Age = customer.Age;
-                    cust.EyeColor = customer.EyeColor;
-                    cust.Name = customer.Name;
-                    cust.Gender = customer.Gender;
-                    cust.Company = customer.Company;
-                    cust.Email = customer.Email;
-                    cust.Phone = customer.Phone;
-                    cust.Address = customer.Address;
-                    cust.About = customer.About;
-                    cust.Registered = customer.Registered;
-                    cust.Longitude = customer.Longitude;
-                    cust.Latitude = customer.Latitude;
+                    Customer cust = _mapper.Map<Customer>(customer);
                     _unitOfWork.Customer.Add(cust);
                 }
                 else
