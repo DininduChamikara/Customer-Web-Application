@@ -38,7 +38,7 @@ namespace Fidenz.Customers.Application.Services
             foreach (var customer in customersList)
             {
                 // Check if the customer with the same ID already exists in the database
-                var existingCustomer = _unitOfWork.Customer.Get(c => c.Id.ToString() == customer._id);
+                var existingCustomer = _unitOfWork.Customer.Get(c => c.CustomerId == customer._id);
 
                 if (existingCustomer == null)
                 {
