@@ -103,8 +103,6 @@ app.UseSwaggerUI(options =>
     }
 });
 
-//builder.Services.AddAutoMapper(typeof(Program).Assembly);
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
